@@ -1,6 +1,3 @@
-                                                              ----- SQL By Vyankatesh Sir---------
-
-
 
 select name from sys.databases;
 create database Bhati_Capital;
