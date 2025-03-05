@@ -1,22 +1,24 @@
 create database Bhati_Capital; -- for creating database--
+
 select name from sys.databases; --for viewing all database--
+
 use Bhati_Capital; --for selecting a database --
+
 create table Customer(Id char(03) primary key,Name varchar(20) not null,Class char(2) not null,State varchar(20) not null);
+
 insert into Customer values ('A01','Sagar Dalai',9588011254,'Chhattisgrah');
-alter table Customer alter column Mobile_No bigint; -- use for adding column
+
+alter table Customer alter column Mobile_No bigint; -- use for adding column --
+
 alter table Customer add Pincode int;  -- Also use for adding column
-select * from Customer;
 alter table Customer add Village varchar(20);
-update Customer set Village = 'Chirimiri' where Id_No='A01';
+
+select * from Customer;
+
+update Customer set Village = 'Chirimiri' where Id_No='A01'; --for updating data in cells--
 update Customer set Pincode ='341031';
-
-
-
-select * from Employee;
-insert into Employee values('A01','Aditya','10','Rajasthan');
-alter table Employee add Village2 varchar(20);
-select * from Employee;
-update Employee set Village = 'Merta City' where Id = 'A01';
+update Customer set Mobile_No=Mobile_No*1.2;
+update Customer set Mobile_No=Mobile_No*1.2 where Id_No='A11';
 
 insert into Employee values ('A04','Sagar Dalai','13','Chhh.','Chirmiry'),
 ('A05','Sagar Dalai','13','Chhh.','Chirmiry'),
@@ -24,58 +26,32 @@ insert into Employee values ('A04','Sagar Dalai','13','Chhh.','Chirmiry'),
 ('A07','Sagar Dalai','13','Chhh.','Chirmiry'),
 ('A08','Sagar Dalai','13','Chhh.','Chirmiry');
 
-                                                                     --02 August 2024--
-
-select * from Customer;
-update Customer set Village='Gandhinagar' where id_No= 'A09'
 select Name as Naam, State as Village from Customer;
+
 select * from Customer order by Name desc; -- High to Law
 select * from Customer order by Name asc; -- Law to High
 select * from Customer order by State;
 select * from Customer where State= 'Rajasthan';
-insert into Customer values('A11','Rohan','','Gujarat','Merta');
-select * from Customer 
-order by Name,State;
-
-update Customer set Mobile_No ='4568545454' where Id_No='A11';
-
-
 
 exec sp_help Customer; --for showing more information of creation
 
 truncate table Employee;    --it will be all clear data but column remians
+
 select 22/7 -- get lower nearst numer & like 3.5 get 4 and 4.5 take 4 like even number
 select cast(22 as float)/7
 select 13%3    --only gives reminders like 1
 
 select cast('02/09/2024' as datetime);
 
-update Customer set Mobile_No=Mobile_No*1.2;
-update Customer set Mobile_No=Mobile_No*1.2 where Id_No='A11';
-
-
-
-                                                                           --04 Aug 2024--
-
 select * from Customer order by Name
 offset 3 rows
 fetch next 5 rows only;
-
 select * from Customer order by id_No
-offset 3 rows;  -- offset for not selection particular raws
-
+offset 3 rows;  -- offset for not selection particular raws and fetch how much you want to fetch
 select * from Customer order by id_No offset 0 rows
 fetch next 5 rows only;
 
-
-
-select * from Customer order by Id_No
-offset 3 rows
-fetch next 5 rows only;
-
 select count(*) from Customer;
-
-
 select count(Village) from Customer;
 
 select DISTINCT(Name) from Customer;  -- for selecting only column particular
@@ -83,26 +59,21 @@ select DISTINCT(Name) from Customer;  -- for selecting only column particular
 select count(distinct(Village)) as Dream_Place from Customer;   --for selecting particular column number and give name as your wish
 select count(*) as DreamPlace from Customer where Village= 'Padukalan';
 
---How many employees have salary greater than 60000 ?
-
-                                                                        --09 Aug 2024--
-
-alter table Customer add Income int;
-select * from Customer;
-
-update Customer set Income=(case when Id_No='A02' then '35000'
-when Id_No='A03' then '40000'
-when Id_No='A04' then '55000'
-when Id_No='A05' then '65000'
-when Id_No='A06' then '75000'
-when Id_No='A07' then '85000'
-when Id_No='A08' then '95000'
-when Id_No='A09' then '35000'
-when Id_No='A10' then '40000'
-when Id_No='A11' then '99000'
-when Id_No='A01' then '35000'
-end)
-where Id_No in ('A01','A02','A03','A04','A05','A06','A07','A08','A09','A10','A11');   -- #by this query whithout update raw not have null
+update Customer 
+set Income = case 
+    when Id_No = 'A02' then '35000'
+    when Id_No = 'A03' then '40000'
+    when Id_No = 'A04' then '55000'
+    when Id_No = 'A05' then '65000'
+    when Id_No = 'A06' then '75000'
+    when Id_No = 'A07' then '85000'
+    when Id_No = 'A08' then '95000'
+    when Id_No = 'A09' then '35000'
+    when Id_No = 'A10' then '40000'
+    when Id_No = 'A11' then '99000'
+    when Id_No = 'A01' then '35000'
+end
+where Id_No in ('A01', 'A02', 'A03', 'A04', 'A05', 'A06', 'A07', 'A08', 'A09', 'A10', 'A11');  -- #by this query whithout update raw not have null
 
 select max(Income) as Max_Income from Customer;
 
