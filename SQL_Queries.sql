@@ -1,7 +1,6 @@
-
-select name from sys.databases;
-create database Bhati_Capital;
-use Bhati_Capital;
+create database Bhati_Capital; -- for creating database--
+select name from sys.databases; --for viewing all database--
+use Bhati_Capital; --for selecting a database --
 create table Customer(Id char(03) primary key,Name varchar(20) not null,Class char(2) not null,State varchar(20) not null);
 insert into Customer values ('A01','Sagar Dalai',9588011254,'Chhattisgrah');
 alter table Customer alter column Mobile_No bigint; -- use for adding column
